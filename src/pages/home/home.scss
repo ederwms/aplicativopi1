@@ -1,0 +1,53 @@
+page-home {
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+        display: block;
+        position: relative;
+        top: 80px;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .batimento p {
+        font-size: 2.5em;
+        color: aliceblue;
+        display: block;
+        position: relative;
+        left: 143px;
+        top: 175px;
+    }
+
+    .batimento {
+        margin-top: 50px;
+        margin-left: -20px;
+        height: 400px;
+        width: 400px;
+        background-image: url("../assets/imgs/coracao.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #bom {
+        display: block;
+        width: 100%;
+    }
+
+    .estado {
+        display: block;
+        text-align: center;
+        font-size: 2em;
+        color: #2afc5f;
+    }
+
+    .estado p {
+        font-size: 1.5em;
+
+    }
+
+}
