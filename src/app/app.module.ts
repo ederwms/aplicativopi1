@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPageModule } from '../pages/intro/intro.module';
+import { ConfigProvider } from '../providers/config/config';
+import { FormProvider } from '../providers/form/form';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { IntroPageModule } from '../pages/intro/intro.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfigProvider,
+    FormProvider
   ]
 })
 export class AppModule {}
