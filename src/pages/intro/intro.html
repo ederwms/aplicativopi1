@@ -24,15 +24,17 @@
           </div>
     </ion-slide>
     <ion-slide>
+      <div id="inserir">
         <ion-item>
             <ion-input [(ngModel)] = "inputNome" placeholder="Digite aqui o nome do seu amigo" >  </ion-input>
           </ion-item>
     
           <button ion-button (click)="gravaNome()">Pronto!</button>
 
-      <a (click)="goToTabsPage()" class="comecar">
-        <strong>Começar!</strong>
-      </a>
+        <a (click)="goToTabsPage()" class="comecar">
+          <strong>Começar!</strong>
+        </a>
+      </div>
     </ion-slide>
   </ion-slides>
 </ion-content>
