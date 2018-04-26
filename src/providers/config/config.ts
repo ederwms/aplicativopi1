@@ -13,7 +13,7 @@ let key:string = "config";
 export class ConfigProvider {
 
   private config = {
-    showSlide: false
+    showSlide: false,
   }
 
   constructor() {
@@ -22,11 +22,11 @@ export class ConfigProvider {
 
   // Pega os dados no local storage
   getConfig():any {
-    return localStorage.getItem(key) || {};
+    return localStorage.getItem(key);
   }
 
-  // Salva os dados no local storage  
-  setConfig(showSlide: boolean):any {
+  // Grava os dados no local storage  
+  setConfig(showSlide?: boolean) {
     let config = {
       showSlide: false
     }

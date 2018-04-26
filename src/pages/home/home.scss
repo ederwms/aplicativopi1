@@ -21,13 +21,13 @@ page-home {
         position: relative;
         left: 143px;
         top: 175px;
+        width: 100%;
     }
 
     .batimento {
-        margin-top: 50px;
-        margin-left: -20px;
+        margin: 50px auto 10px auto;
         height: 400px;
-        width: 400px;
+        width: 100%;
         background-image: url("../assets/imgs/coracao.png");
         background-size: 100%;
         background-repeat: no-repeat;
