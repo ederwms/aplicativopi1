@@ -9,6 +9,10 @@ page-intro {
         font-size: 12px;
     }
 
+    .campo {
+        margin: 20px auto 20px auto;
+    }
+
     .nome-button {
         width: 90%;
         margin: 20px auto 20px auto;
@@ -27,7 +31,7 @@ page-intro {
     }
 
     div#interface {
-        height: 639px;
+        height: 50%;
         width: 100%;
         //border: 1px solid black;
     }

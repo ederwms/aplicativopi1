@@ -18,15 +18,15 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, configProvider: ConfigProvider) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
 
-      // O que ira fazer a pagina intro aparecer somente na primeira vez que o app e aberto.
+      // O codigo abaixo irá fazer a pagina intro aparecer somente na primeira vez que o app e aberto.
 
-      // Variavel que recebe o retorno da funcao getConfig declarada em "config.ts".
-      let config = configProvider.getConfig();
+      let config = configProvider.getConfig(); // Recebe o retorno da funcao getConfig declarada em "config.ts".
+
 
       // Verifica se é a primeira vez que a pagina intro esta sendo mostrada.
+      // Se for, a variavel config vai estar com o valor null e entao ira mostrar a IntroPage
+      // se tiver qualquer outro valor nela, o app irá direto para a TabsPage.
       if (config == null) {
         configProvider.setConfig(false);
         this.rootPage = IntroPage;
