@@ -1,9 +1,9 @@
 page-intro {
 
-    * {
-        font-family: 'Montserrat', sans-serif;
+    page-intro * {
+        font-family: initial;
+        color: currentColor;
     }
-
     .error {
         color: #ff0000;
         font-size: 12px;
@@ -29,22 +29,29 @@ page-intro {
         position: relative;
         top: 30%;
     }
-
     div#interface {
-        height: 50%;
+        height: 100%;
         width: 100%;
         //border: 1px solid black;
     }
 
     div#info {
-        display: block;
         position: relative;
-        top: 20%;
+        top: 60%;
         margin: auto;
-        padding: 2px;
-        background-color: #ffffff;
-        box-shadow: 1px 1px 1px 1px #dbdbdb;
-        height: 250px;
-        width: 70%;
+        background-color:white;
+                     
     }
+    
+    .p{
+       font-family: 'Courier New', Courier, monospace
+        
+    }
+
+    img {
+        position: relative;
+        width: 277px;
+        height: 182px;
+
+    }   
 }

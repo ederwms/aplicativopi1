@@ -3,38 +3,45 @@
     <ion-slide>
       <div id="interface">
         <div id="info">
-          <p>Funcionalidade</p>
-          <img src="" alt="Imagem de exemplo">
-          <p>Poucos detalhes</p>
+          <p>Seja bem-vindo ao HealthyPet!</p>
+          <br>
+          <br>
+          <img src="assets/imgs/dog.jpg" alt="dog">
         </div>
-        <span class="msg">Monitore o seu animal de onde estiver.</span>
-        <span class="msg2">Saiba sempre como ele está.</span>
       </div>
     </ion-slide>
     <ion-slide>
-        <div id="interface">
-            <div id="info">
-              <p>Funcionalidade</p>
-              <img src="" alt="Imagem de exemplo">
-              <p>Poucos detalhes</p>
-            </div>
-    
-            <span class="msg">Monitore o seu animal de onde estiver.</span>
-            <span class="msg2">Saiba sempre como ele está.</span>
+      <div id="interface">
+          <div id="info">
+            <p>Muitas pessoas tem curiosidade ou necessidade de fazer um acompanhamento com a saúde de seus cães.</p>
+            <br>
+            <img src="assets/imgs/dog1.jpg" alt="dog1">
+            <br>
+            <p>Para isso criamos a coleira "nomedoproduto" para que seja possível um acompanhamento a qualquer hora e qualquer lugar!</p>
           </div>
-    </ion-slide>
+        </div>
+  </ion-slide>
+  <ion-slide>
+    <div id="interface">
+        <div id="info">
+          <p>Aqui você poderá fazer a medição dos batimentos cardíacos do seu melhor amigo e para isso você terá acesso a uma tabela com as devidas informações!!</p>
+          <br>
+          <img src="assets/imgs/dog2.jpg" alt="dog2">
+        </div>
+      </div>
+</ion-slide>
     <ion-slide>
-      <div id="inserir">
         <ion-item>
             <ion-input [(ngModel)] = "inputNome" placeholder="Digite aqui o nome do seu amigo" >  </ion-input>
-          </ion-item>
-    
-          <button ion-button (click)="gravaNome()">Pronto!</button>
+        </ion-item>
+        <br>
 
-        <a (click)="goToTabsPage()" class="comecar">
-          <strong>Começar!</strong>
-        </a>
-      </div>
+        <button ion-button (click)="gravaNome()"> Começar! </button>
+<!--
+      <a (click)="gravaNome()" class="comecar">
+        <strong>Começar!</strong>
+      </a>
+    -->
     </ion-slide>
   </ion-slides>
 </ion-content>
