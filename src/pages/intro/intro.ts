@@ -27,12 +27,15 @@ export class IntroPage {
     console.log('ionViewDidLoad IntroPage');
   }
 
+  /*
   public goToTabsPage() {
     this.navCtrl.push(TabsPage)
   }
+  */
 
   gravaNome() {
     localStorage.setItem(key, this.inputNome);
+    this.navCtrl.push(TabsPage);
   }
 
 }
