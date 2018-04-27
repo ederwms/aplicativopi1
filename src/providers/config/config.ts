@@ -11,7 +11,7 @@ let key:string = "config";
 
 @Injectable()
 export class ConfigProvider {
-
+/*
   private config = {
     showSlide: false,
   }
@@ -37,5 +37,6 @@ export class ConfigProvider {
 
     localStorage.setItem(key, JSON.stringify(config));
   }
+*/
 
 }
