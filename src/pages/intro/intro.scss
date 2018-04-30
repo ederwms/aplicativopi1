@@ -1,9 +1,14 @@
 page-intro {
-
+    
     page-intro * {
-        font-family: initial;
-        color: currentColor;
+        font-style: initial;
     }
+    
+    .css {      
+        text-align: center;
+        background-image: url('../assets/imgs/fundo.png')  
+    }
+
     .error {
         color: #ff0000;
         font-size: 12px;
@@ -16,42 +21,44 @@ page-intro {
     .nome-button {
         width: 90%;
         margin: 20px auto 20px auto;
-    }
-
-    span.msg, span.msg2 {
-        display: block;
-        position: relative;
-        top: 25%;
-    }
-
-    a {
-        display: block;
-        position: relative;
-        top: 30%;
-    }
+        color: blue;
+    }   
+    
     div#interface {
-        height: 100%;
+        height: 50%;
         width: 100%;
         //border: 1px solid black;
     }
 
     div#info {
+        border-radius: 10px;
+        display: block;
         position: relative;
-        top: 60%;
+        top: auto;
         margin: auto;
-        background-color:white;
-                     
+        padding: auto;
+        background-color: #ffffff;
+        box-shadow: auto #dbdbdb;
+        height: auto;
+        width: 70%;
     }
     
-    .p{
-       font-family: 'Courier New', Courier, monospace
-        
+    div#info > p{
+       font-style: 'Courier New', Courier, monospace;
+       text-align: center;
     }
 
-    img {
-        position: relative;
-        width: 50%;
-        height: 100%;
-        margin: auto;
-    }   
+    div#info > img{
+        border-radius: 13px;
+    }
+
+    div#interface > button{
+        left: 300px;
+        right: 300px;
+        top: 610px;
+        bottom: 610px;
+        position: absolute;
+        content: "";
+    }
+
 }
