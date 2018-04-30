@@ -25,7 +25,8 @@ import { FormProvider } from '../providers/form/form';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IntroPageModule
+    IntroPageModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
