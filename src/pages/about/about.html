@@ -1,30 +1,38 @@
 <ion-content>
-  <h2>Tabela de Intervalos Regulares</h2>
-  <br>
-  <table>
+  <table id="regular">
+    <caption>Intervalos Regulares</caption>
     <tr>
-      <th> <h2>Animal</h2> </th>
-      <th> <h2>Batimento normal</h2> </th>
+      <td colspan="2" class="pet"><strong>Cães</strong></td>
     </tr>
+
+    <tr class="dif">
+      <td class="esquerda"> <strong>Cães com até 10kg</strong> </td>
+      <td class="direita"> 70~180bpm </td>
+    </tr>
+
     <tr>
-      <td> <strong>Cães com até 10kg</strong> </td>
-      <td> 70~180bpm </td>
+      <td class="esquerda"> <strong>Cães com mais de 10kg</strong> </td>
+      <td class="direita">60~140bpm</td>
     </tr>
+
+    <tr class="dif">
+      <td class="esquerda"> <strong>Filhotes de cães (até 6 semanas)</strong> </td>
+      <td class="direita">Até 220bpm</td>
+    </tr>
+
     <tr>
-      <td> <strong>Cães com mais de 10kg</strong> </td>
-      <td>60~140bpm</td>
+      <td colspan="2" class="pet"> <strong>Gatos</strong> </td>
     </tr>
+
     <tr>
-      <td> <strong>Filhotes de cães (até 6 semanas)</strong> </td>
-      <td>Até 220bpm</td>
+      <td class="esquerda"> <strong>Gatos adultos</strong> </td>
+      <td class="direita">120~140bpm</td>
     </tr>
-    <tr>
-      <td> <strong>Gatos adultos</strong> </td>
-      <td>120~140bpm</td>
+
+    <tr class="dif">
+      <td class="esquerda"> <strong>Filhotes de gatos (até 6 semanas)</strong> </td>
+      <td class="direita">200~300bpm</td>
     </tr>
-    <tr>
-      <td> <strong>Filhotes de gatos (até 6 semanas)</strong> </td>
-      <td>200~300bpm</td>
-    </tr>
+
   </table>
 </ion-content>

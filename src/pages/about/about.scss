@@ -1,17 +1,39 @@
 page-about {
-    h2 {
-        text-align: center;
+    caption {
+        padding: 10px;
+        font-weight: bold;
+        font-size: 2em;
+        color: #303030;
+        border: 1px solid #ffffff;
     }
 
-    table, th, td {
-        font-size: 1.2em;
-        border: 1px solid black;
-        text-align: center;
+    table#regular {
+        border: 1px solid #ffffff;
+        border-spacing: 0px;
         width: 100%;
     }
 
-    th, td {
-        width: 50%;
-        height: 50px;
+    td {
+        border: 1px solid #ffffff;
+        padding: 10px;
+    }
+
+    td.pet {
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #ffffff;
+        background-color: #0092CE;
+    }
+
+    td.esquerda {
+        color: #ffffff;
+        background-color: #33A7D8;
+        vertical-align: top;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    td.direita {
+        background-color: #85CAE7;
     }
 }
