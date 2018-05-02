@@ -1,9 +1,12 @@
 page-intro {
     
-    page-intro * {
-        font-style: initial;
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
     }
-    
+
     .css {      
         text-align: center;
         background-image: url('../assets/imgs/fundo.png');

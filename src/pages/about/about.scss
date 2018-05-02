@@ -1,4 +1,11 @@
 page-about {
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     caption {
         padding: 10px;
         font-weight: bold;
@@ -8,6 +15,7 @@ page-about {
     }
 
     table#regular {
+        margin-top: 5%;
         border: 1px solid #ffffff;
         border-spacing: 0px;
         width: 100%;
@@ -15,12 +23,12 @@ page-about {
 
     td {
         border: 1px solid #ffffff;
-        padding: 10px;
+        padding: 20px 10px 20px 10px;
     }
 
     td.pet {
         font-weight: bold;
-        font-size: 1.3em;
+        font-size: 1.5em;
         color: #ffffff;
         background-color: #0092CE;
     }
@@ -36,5 +44,6 @@ page-about {
     td.direita {
         background-color: #85CAE7;
         color: #ffffff;
+        text-align: center;
     }
 }
