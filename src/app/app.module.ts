@@ -13,6 +13,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { ConfigProvider } from '../providers/config/config';
 import { FormProvider } from '../providers/form/form';
+import { MapaPageModule } from '../pages/mapa/mapa.module';
+
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { FormProvider } from '../providers/form/form';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IntroPageModule,
+    MapaPageModule
     
   ],
   bootstrap: [IonicApp],
@@ -39,6 +43,7 @@ import { FormProvider } from '../providers/form/form';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConfigProvider,
     FormProvider

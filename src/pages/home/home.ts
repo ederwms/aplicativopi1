@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { MapaPage } from '../mapa/mapa';
 
 let keyNome: string = "nome";
 let keyRaca: string = "raca";
@@ -13,8 +15,8 @@ let keyPeso: string = "peso";
 export class HomePage {
 
   saudacao: string;
-  data:any;
-  horaCerta:any;
+  data: any;
+  horaCerta: any;
 
   valores: any[];
   i: any;
@@ -23,7 +25,7 @@ export class HomePage {
   estado: string = "AGUARDANDO...";
   cor: string = "black";
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
     this.batimentos = 0;
   }
 
@@ -64,12 +66,46 @@ export class HomePage {
     if (this.tipoAnimal == "c") {
       if (this.pesoAnimal <= 10) {
         if (this.batimentos <= 70) {
+          await this.delay(2000);
           this.estado = "MUITO BAIXO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito baixo!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else if (this.batimentos >= 180) {
+          await this.delay(2000);
           this.estado = "MUITO ALTO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito alto!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else {
           this.estado = "REGULAR!";
@@ -78,12 +114,46 @@ export class HomePage {
       }
       else if (this.pesoAnimal > 10) {
         if (this.batimentos <= 60) {
+          await this.delay(2000);
           this.estado = "MUITO BAIXO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito baixo!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else if (this.batimentos >= 140) {
+          await this.delay(2000);
           this.estado = "MUITO ALTO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito alto!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else {
           this.estado = "REGULAR!";
@@ -94,12 +164,47 @@ export class HomePage {
     else if (this.tipoAnimal == "g") {
       if (this.pesoAnimal < 2) {
         if (this.batimentos <= 120) {
+          await this.delay(2000);
           this.estado = "MUITO BAIXO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito baixo!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
+
         }
         else if (this.batimentos >= 140) {
+          await this.delay(2000);
           this.estado = "MUITO ALTO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito alto!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else {
           this.estado = "REGULAR!";
@@ -108,12 +213,46 @@ export class HomePage {
       }
       else if (this.pesoAnimal > 2) {
         if (this.batimentos <= 200) {
+          await this.delay(2000);
           this.estado = "MUITO BAIXO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito baixo!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else if (this.batimentos >= 300) {
+          await this.delay(2000);
           this.estado = "MUITO ALTO!";
           this.cor = "red";
+
+          let alert = this.alertCtrl.create({
+            title: '<h1>Batimento muito alto!</h1>',
+            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            buttons: [
+              {
+                text: 'Abrir mapa',
+                //role: 'cancel',
+                handler: () => {
+                  this.navCtrl.push(MapaPage);
+                  console.log('Abrindo mapa...');
+                }
+              },
+            ]
+          });
+          alert.present();
         }
         else {
           this.estado = "REGULAR!";
@@ -121,20 +260,20 @@ export class HomePage {
         }
       }
     }
-    
+
     this.mensagem = "Começar a medir";
     return this.batimentos;
   }
 
 
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }
-  
+
 
   nomeAnimal = localStorage.getItem(keyNome);
   tipoAnimal = localStorage.getItem(keyRaca);
