@@ -3,10 +3,13 @@
   <h3>{{mostraSaudacao()}} Como está o coração de {{nomeAnimal}} hoje?</h3>
 
   <div class="batimento">
-    <p>90 bpm</p>
+    <p>{{batimentos}} bpm</p>
   </div>
 
+  <button class="btnMedir" ion-button default (click)="mostrarBPM()" >{{mensagem}}</button>
+
+
   <div id="bom">
-    <span class="estado">REGULAR!</span>
+    <span class="estado" [style.color]=cor >{{estado}}</span>
   </div>
 </ion-content>

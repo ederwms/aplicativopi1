@@ -13,18 +13,18 @@
     </ion-slide>
     <ion-slide>
       <div id="interface">
-          <h1>Acompanhe o seu pet.</h1>   
-          <br>
-          <br>     
-          <div id="info">
-            <img src="assets/imgs/dog1.jpg" alt="dog1">
-          </div>
-          <br>
-          <p>Saiba o estado dele com base em seu batimento cardiaco!!</p>          
+        <h1>Acompanhe o seu pet.</h1>
+        <br>
+        <br>
+        <div id="info">
+          <img src="assets/imgs/dog1.jpg" alt="dog1">
         </div>
-  </ion-slide>
-  <ion-slide>
-    <div id="interface">
+        <br>
+        <p>Saiba o estado dele com base em seu batimento cardiaco!!</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div id="interface">
         <h1>Tabela com informações</h1>
         <br>
         <br>
@@ -32,15 +32,27 @@
           <img src="assets/imgs/dog2.jpg" alt="dog2">
         </div>
         <br>
-        <p>A qualquer hora e em qualquer lugar!</p>        
+        <p>A qualquer hora e em qualquer lugar!</p>
       </div>
-</ion-slide>
+    </ion-slide>
     <ion-slide id="nomeDog">
-        <ion-item>
-            <ion-input [(ngModel)] = "inputNome" placeholder="Digite aqui o nome do seu amigo" >  </ion-input>
+      <ion-item>
+        <ion-label>Escolha:</ion-label>
+        <ion-select [(ngModel)]="inputRaca">
+          <ion-option value="c">Cão</ion-option>
+          <ion-option value="g">Gato</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-input [(ngModel)]="inputPeso" placeholder="Digite aqui o peso do seu amigo"> </ion-input>
         </ion-item>
 
-        <button ion-button (click)="gravaNome()"> Começar! </button>  
+      <ion-item>
+        <ion-input [(ngModel)]="inputNome" placeholder="Digite aqui o nome do seu amigo"> </ion-input>
+      </ion-item>
+
+      <button ion-button (click)="gravaNome()"> Começar! </button>
     </ion-slide>
   </ion-slides>
 </ion-content>

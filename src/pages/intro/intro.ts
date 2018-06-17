@@ -9,7 +9,9 @@ import { TabsPage } from '../tabs/tabs';
  * Ionic pages and navigation.
  */
 
- let key:string = "nome";
+ let keyNome:string = "nome";
+ let keyRaca: string = "raca";
+ let keyPeso: string = "peso";
 
 @IonicPage()
 @Component({
@@ -18,7 +20,9 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class IntroPage {
 
-  inputNome:string;
+  inputNome: string;
+  inputRaca: string;
+  inputPeso: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -34,7 +38,9 @@ export class IntroPage {
   */
 
   gravaNome() {
-    localStorage.setItem(key, this.inputNome);
+    localStorage.setItem(keyPeso, this.inputPeso);
+    localStorage.setItem(keyRaca, this.inputRaca);
+    localStorage.setItem(keyNome, this.inputNome);
     this.navCtrl.push(TabsPage);
   }
 
