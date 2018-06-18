@@ -6,11 +6,16 @@ page-home {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    .btnConectar {
+        display: block;
+        margin-left: auto;
+    }
+
     h3 {
         color: #333333;
         display: block;
         position: relative;
-        top: 80px;
+        top: 15px;
         font-size: 2em;
         text-align: center;
     }
@@ -26,7 +31,7 @@ page-home {
     }
 
     .batimento {
-        margin: 50px auto 10px auto;
+        margin: -5px auto 10px auto;
         height: 60%;
         width: 100%;
         background-image: url("../assets/imgs/coracao.png");

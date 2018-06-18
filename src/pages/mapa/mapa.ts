@@ -119,7 +119,7 @@ export class MapaPage {
       let longitudeLugar = lugar.geometry.location.lng();
       let idLugar = lugar.place_id;
 
-     let conteudo = '<div> <strong>' + lugar.name + '</strong> <br> ' + lugar.vicinity + '<br><br> <button ion-button color="default" (click)="tracarRota()">Traçar rota</button> </div> ';
+     let conteudo = '<div> <strong>' + lugar.name + '</strong> <br> ' + lugar.vicinity + '</div> ';
      let janelaInfo = new google.maps.InfoWindow({
        content: conteudo,
        maxWidth: 200

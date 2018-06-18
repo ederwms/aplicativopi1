@@ -1,4 +1,6 @@
 <ion-content>
+
+  <button class="btnConectar" ion-button color="secondary" (click)="irParaConexao()">Conectar Bluetooth</button>
   
   <h3>{{mostraSaudacao()}} Como está o coração de {{nomeAnimal}} hoje?</h3>
 
@@ -6,11 +8,11 @@
     <p>{{batimentos}} bpm</p>
   </div>
 
-  <button class="btnMedir" ion-button default (click)="mostrarBPM()" >{{mensagem}}</button>
-  <button class="btnMedir" ion-button danger (click)="pararBPM()" >Parar</button>
+  <button color={{corBotao}} class="btnMedir" ion-button (click)="mostrarBPM()" >{{mensagem}}</button>
+  <!-- <button class="btnMedir" ion-button danger (click)="pararBPM()" >Parar</button> -->
 
 
   <div id="bom">
-    <span class="estado" [style.color]=cor >{{estado}}</span>
+    <span class="estado" [style.color]=corTexto >{{estado}}</span>
   </div>
 </ion-content>

@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 import { MapaPage } from '../mapa/mapa';
+import { ConexaoPage } from '../conexao/conexao';
 
 let keyNome: string = "nome";
 let keyRaca: string = "raca";
@@ -16,6 +17,8 @@ let keyPeso: string = "peso";
 })
 export class HomePage {
 
+  mensagemAlerta: string = "<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>"
+
   podeReceber: boolean = false;
 
   saudacao: string;
@@ -27,7 +30,8 @@ export class HomePage {
   batimentos: any;
   mensagem: string = "Começar a medir";
   estado: string = "AGUARDANDO...";
-  cor: string = "black";
+  corTexto: string = "black";
+  corBotao: string = "default";
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial) {
     this.bluetoothSerial.enable();
@@ -64,11 +68,12 @@ export class HomePage {
     this.podeReceber = true;
     this.mensagem = "Medindo...";
     this.estado = "MEDINDO...";
-    this.cor = "black";
+    this.corTexto = "black";
+    this.corBotao = "default";
     this.batimentos = 0;
 
     console.log("Medindo...");
-    this.valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    this.valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 //***************************************************************************************************************************************
 
@@ -92,17 +97,20 @@ export class HomePage {
 
     // Verifica se o tipo escolhido no inicio do app é 'c' (cão)
     if (this.tipoAnimal == "c") {
+      this.estado = "CALCULANDO...";
+      await this.delay(2000);
       // Verifica o peso informado
       if (this.pesoAnimal <= 10) {
         // Verifica o valor que está guardado na variavel "batimentos"
         if (this.batimentos <= 70) {
-          await this.delay(2000);
+          
           this.estado = "MUITO BAIXO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p">Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p  ">Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito baixo!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -117,13 +125,14 @@ export class HomePage {
           alert.present();
         }
         else if (this.batimentos >= 180) {
-          await this.delay(2000);
+          
           this.estado = "MUITO ALTO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito alto!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito alto!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -139,18 +148,20 @@ export class HomePage {
         }
         else {
           this.estado = "REGULAR!";
-          this.cor = "green";
+          this.corTexto = "green";
+          this.corBotao = "secondary";
         }
       }
       else if (this.pesoAnimal > 10) {
         if (this.batimentos <= 60) {
-          await this.delay(2000);
+          
           this.estado = "MUITO BAIXO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito baixo!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -165,13 +176,14 @@ export class HomePage {
           alert.present();
         }
         else if (this.batimentos >= 140) {
-          await this.delay(2000);
+          
           this.estado = "MUITO ALTO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito alto!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito alto!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -187,26 +199,30 @@ export class HomePage {
         }
         else {
           this.estado = "REGULAR!";
-          this.cor = "green";
+          this.corTexto = "green";
+          this.corBotao = "secondary";
         }
       }
     }
 
 //***************************************************************************************************************************************
 
-    // Verifica se o tipo escolhido no inicio do app é 'c' (cão)
+    // Verifica se o tipo escolhido no inicio do app é 'g' (gato)
     else if (this.tipoAnimal == "g") {
+      this.estado = "CALCULANDO...";
+      await this.delay(2000);
       // Verifica o peso informado
       if (this.pesoAnimal < 2) {
         // Verifica o valor que está guardado na variavel "batimentos"
         if (this.batimentos <= 120) {
-          await this.delay(2000);
+          
           this.estado = "MUITO BAIXO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito baixo!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -222,13 +238,14 @@ export class HomePage {
 
         }
         else if (this.batimentos >= 140) {
-          await this.delay(2000);
+          
           this.estado = "MUITO ALTO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito alto!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito alto!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -244,18 +261,20 @@ export class HomePage {
         }
         else {
           this.estado = "REGULAR!";
-          this.cor = "green";
+          this.corTexto = "green";
+          this.corBotao = "secondary";
         }
       }
       else if (this.pesoAnimal > 2) {
         if (this.batimentos <= 200) {
-          await this.delay(2000);
+          
           this.estado = "MUITO BAIXO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito baixo!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -270,13 +289,14 @@ export class HomePage {
           alert.present();
         }
         else if (this.batimentos >= 300) {
-          await this.delay(2000);
+          
           this.estado = "MUITO ALTO!";
-          this.cor = "red";
+          this.corTexto = "red";
+          this.corBotao = "danger";
 
           let alert = this.alertCtrl.create({
-            title: '<h1>Batimento muito alto!</h1>',
-            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
+            title: '<h2>Batimento muito alto!</h2>',
+            message: this.mensagemAlerta,
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -292,13 +312,18 @@ export class HomePage {
         }
         else {
           this.estado = "REGULAR!";
-          this.cor = "green";
+          this.corTexto = "green";
+          this.corBotao = "secondary";
         }
       }
     }
 
-    this.mensagem = "Começar a medir";
+    this.mensagem = "Medir novamente";
     return this.batimentos;
+  }
+
+  irParaConexao() {
+    this.navCtrl.push(ConexaoPage);
   }
 
 

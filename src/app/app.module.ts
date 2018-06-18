@@ -14,6 +14,7 @@ import { IntroPageModule } from '../pages/intro/intro.module';
 import { ConfigProvider } from '../providers/config/config';
 import { FormProvider } from '../providers/form/form';
 import { MapaPageModule } from '../pages/mapa/mapa.module';
+import { ConexaoPageModule } from '../pages/conexao/conexao.module';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
@@ -30,7 +31,8 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IntroPageModule,
-    MapaPageModule
+    MapaPageModule,
+    ConexaoPageModule
     
   ],
   bootstrap: [IonicApp],
