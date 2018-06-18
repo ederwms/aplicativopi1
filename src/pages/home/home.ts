@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+
 import { MapaPage } from '../mapa/mapa';
 
 let keyNome: string = "nome";
@@ -14,6 +16,8 @@ let keyPeso: string = "peso";
 })
 export class HomePage {
 
+  podeReceber: boolean = false;
+
   saudacao: string;
   data: any;
   horaCerta: any;
@@ -25,7 +29,8 @@ export class HomePage {
   estado: string = "AGUARDANDO...";
   cor: string = "black";
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial) {
+    this.bluetoothSerial.enable();
     this.batimentos = 0;
   }
 
@@ -48,23 +53,48 @@ export class HomePage {
     }
   }
 
+//***************************************************************************************************************************************
+
+  pararBPM() {
+    console.log("Parei!");
+    this.podeReceber = false;
+  }
+
   async mostrarBPM() {
+    this.podeReceber = true;
     this.mensagem = "Medindo...";
     this.estado = "MEDINDO...";
     this.cor = "black";
     this.batimentos = 0;
 
+    console.log("Medindo...");
     this.valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+//***************************************************************************************************************************************
+
+    // Atribui valores a variavel batimentos para que seja verificada posteriormente
+    /*
+    while (this.podeReceber == true) {
+      this.batimentos = this.bluetoothSerial.read();
+
+      await this.delay(1000);
+    }
+    */
+
+    
     for (this.i = 0; this.i < 10; this.i++) {
       this.valores[this.i] = Math.floor(this.getRandomArbitrary(30, 260));
 
       this.batimentos = this.valores[this.i];
       await this.delay(1000);
     }
+    
 
+    // Verifica se o tipo escolhido no inicio do app é 'c' (cão)
     if (this.tipoAnimal == "c") {
+      // Verifica o peso informado
       if (this.pesoAnimal <= 10) {
+        // Verifica o valor que está guardado na variavel "batimentos"
         if (this.batimentos <= 70) {
           await this.delay(2000);
           this.estado = "MUITO BAIXO!";
@@ -72,7 +102,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p">Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p  ">Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -93,7 +123,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito alto!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -120,7 +150,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -141,7 +171,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito alto!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -161,8 +191,14 @@ export class HomePage {
         }
       }
     }
+
+//***************************************************************************************************************************************
+
+    // Verifica se o tipo escolhido no inicio do app é 'c' (cão)
     else if (this.tipoAnimal == "g") {
+      // Verifica o peso informado
       if (this.pesoAnimal < 2) {
+        // Verifica o valor que está guardado na variavel "batimentos"
         if (this.batimentos <= 120) {
           await this.delay(2000);
           this.estado = "MUITO BAIXO!";
@@ -170,7 +206,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -192,7 +228,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito alto!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -219,7 +255,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito baixo!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -240,7 +276,7 @@ export class HomePage {
 
           let alert = this.alertCtrl.create({
             title: '<h1>Batimento muito alto!</h1>',
-            message: '<p style="font-weight: bold">Isso pode indicar um problema.</p> <p style="font-weight: bold">Considere levar o seu amigo ao veterinário.</p> <p style="font-weight: bold">Aqui estão alguns veterinários próximos de você.</p>',
+            message: '<p>Isso pode indicar um problema.</p> <p>Considere levar o seu amigo ao veterinário.</p> <p>Aqui estão alguns veterinários próximos de você.</p>',
             buttons: [
               {
                 text: 'Abrir mapa',
@@ -266,10 +302,12 @@ export class HomePage {
   }
 
 
+  // Função usada para "fazer o app esperar para mostrar algo na tela"
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  // Função usada para randomizar um numero
   getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }

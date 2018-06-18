@@ -5,12 +5,12 @@ import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@io
 declare var google;
 let janelaInfo;
 
-/**
+/*
  * Generated class for the MapaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
- */
+*/
 
 @IonicPage()
 @Component({
@@ -91,9 +91,8 @@ export class MapaPage {
     var service = new google.maps.places.PlacesService(this.map);
     let request = {
       location: latLng,
-      radius: 3000,
+      radius: 2000,
       keyword: 'veterinária',
-      //type: ["veterinary_care"]
     };
     return new Promise((resolve, reject) => {
       service.nearbySearch(request, function (results, status) {
@@ -116,12 +115,6 @@ export class MapaPage {
     });
 
     google.maps.event.addListener(marcadorVet, 'click', function() {
-      /*
-      janelaInfo.setContent("<div> <strong>" + lugar.name + "</strong> <br> " + lugar.vicinity + " </div>");
-      janelaInfo.maxWidth = 200;
-      janelaInfo.open(this.map, this);
-      */
-     
       let latituteLugar = lugar.geometry.location.lat();
       let longitudeLugar = lugar.geometry.location.lng();
       let idLugar = lugar.place_id;
@@ -154,32 +147,4 @@ export class MapaPage {
   ionViewDidEnter() {
     this.achaPessoa();
   }
-
-  /*  ionViewDidLoad() {
-  
-      this.geolocation.getCurrentPosition().then((resp) => {
-        const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-  
-        const opcoesMapa = {
-          zoom: 18,
-          center: position,
-          disableDefaultUI: false
-        }
-  
-        this.map = new google.maps.Map(document.getElementById('map'), opcoesMapa);
-  
-        const marcador = new google.maps.Marker({
-          position: position,
-          map: this.map,
-          title: 'Esta é a sua posição',
-          animation: google.maps.Animation.DROP,
-          icon: '../../assets/imgs/pessoa.png'
-        });
-  
-      }).catch((error) => {
-        console.log('Erro ao recuperar sua posição');
-      });
-    }
-  */
-
 }

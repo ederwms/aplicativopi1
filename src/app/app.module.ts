@@ -16,6 +16,7 @@ import { FormProvider } from '../providers/form/form';
 import { MapaPageModule } from '../pages/mapa/mapa.module';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     Geolocation,
+    BluetoothSerial,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConfigProvider,
     FormProvider
