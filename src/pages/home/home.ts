@@ -27,7 +27,8 @@ export class HomePage {
 
   valores: any[];
   i: any;
-  batimentos: any;
+  batimentoParcial: any = 0;
+  batimentoFinal: any = 0;
   mensagem: string = "Começar a medir";
   estado: string = "AGUARDANDO...";
   corTexto: string = "black";
@@ -35,7 +36,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial) {
     this.bluetoothSerial.enable();
-    this.batimentos = 0;
   }
 
   mostraSaudacao() {
@@ -57,7 +57,7 @@ export class HomePage {
     }
   }
 
-//***************************************************************************************************************************************
+  //***************************************************************************************************************************************
 
   pararBPM() {
     console.log("Parei!");
@@ -70,12 +70,11 @@ export class HomePage {
     this.estado = "MEDINDO...";
     this.corTexto = "black";
     this.corBotao = "default";
-    this.batimentos = 0;
 
     console.log("Medindo...");
     this.valores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-//***************************************************************************************************************************************
+    //***************************************************************************************************************************************
 
     // Atribui valores a variavel batimentos para que seja verificada posteriormente
     /*
@@ -84,16 +83,45 @@ export class HomePage {
 
       await this.delay(1000);
     }
+
+    
     */
 
     
-    for (this.i = 0; this.i < 10; this.i++) {
-      this.valores[this.i] = Math.floor(this.getRandomArbitrary(30, 260));
 
-      this.batimentos = this.valores[this.i];
-      await this.delay(1000);
-    }
+    /*
+
+    this.valores[this.i] = Math.floor(this.getRandomArbitrary(60, 80));
+
+      this.batimentoParcial = this.valores[this.i];
+
+      this.batimentoFinal = this.batimentoParcial;
     
+    
+    */
+
+    for (this.i = 0; this.i < 10; this.i++) {
+      this.bluetoothSerial.write('1');
+
+      this.bluetoothSerial.subscribeRawData().subscribe((data) => {
+        console.log(data);
+        this.bluetoothSerial.read().then((data) => {
+          if (data != "") {
+            this.batimentoParcial = data;
+            this.batimentoFinal = parseInt(this.batimentoParcial);
+            //console.log("read" + data);
+          }
+        }, (error) => console.log(error));
+      }, (error) => console.log(error));
+
+      await this.delay(1300);
+    }
+
+    // **************************************************************************************************************************************
+    //console.log("Parcial: " + this.batimentoParcial);
+    //console.log("Final: " + this.batimentoFinal);
+    //console.log("Final: " + this.batimentoFinal);
+
 
     // Verifica se o tipo escolhido no inicio do app é 'c' (cão)
     if (this.tipoAnimal == "c") {
@@ -102,8 +130,8 @@ export class HomePage {
       // Verifica o peso informado
       if (this.pesoAnimal <= 10) {
         // Verifica o valor que está guardado na variavel "batimentos"
-        if (this.batimentos <= 70) {
-          
+        if (this.batimentoFinal <= 70) {
+
           this.estado = "MUITO BAIXO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -124,8 +152,8 @@ export class HomePage {
           });
           alert.present();
         }
-        else if (this.batimentos >= 180) {
-          
+        else if (this.batimentoFinal >= 180) {
+
           this.estado = "MUITO ALTO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -153,8 +181,8 @@ export class HomePage {
         }
       }
       else if (this.pesoAnimal > 10) {
-        if (this.batimentos <= 60) {
-          
+        if (this.batimentoFinal <= 60) {
+
           this.estado = "MUITO BAIXO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -175,8 +203,8 @@ export class HomePage {
           });
           alert.present();
         }
-        else if (this.batimentos >= 140) {
-          
+        else if (this.batimentoFinal >= 140) {
+
           this.estado = "MUITO ALTO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -205,7 +233,7 @@ export class HomePage {
       }
     }
 
-//***************************************************************************************************************************************
+    //***************************************************************************************************************************************
 
     // Verifica se o tipo escolhido no inicio do app é 'g' (gato)
     else if (this.tipoAnimal == "g") {
@@ -214,8 +242,8 @@ export class HomePage {
       // Verifica o peso informado
       if (this.pesoAnimal < 2) {
         // Verifica o valor que está guardado na variavel "batimentos"
-        if (this.batimentos <= 120) {
-          
+        if (this.batimentoFinal <= 120) {
+
           this.estado = "MUITO BAIXO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -237,8 +265,8 @@ export class HomePage {
           alert.present();
 
         }
-        else if (this.batimentos >= 140) {
-          
+        else if (this.batimentoFinal >= 140) {
+
           this.estado = "MUITO ALTO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -266,8 +294,8 @@ export class HomePage {
         }
       }
       else if (this.pesoAnimal > 2) {
-        if (this.batimentos <= 200) {
-          
+        if (this.batimentoFinal <= 200) {
+
           this.estado = "MUITO BAIXO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -288,8 +316,8 @@ export class HomePage {
           });
           alert.present();
         }
-        else if (this.batimentos >= 300) {
-          
+        else if (this.batimentoFinal >= 300) {
+
           this.estado = "MUITO ALTO!";
           this.corTexto = "red";
           this.corBotao = "danger";
@@ -319,7 +347,7 @@ export class HomePage {
     }
 
     this.mensagem = "Medir novamente";
-    return this.batimentos;
+    return this.batimentoFinal;
   }
 
   irParaConexao() {
