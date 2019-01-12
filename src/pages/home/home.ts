@@ -87,17 +87,14 @@ export class HomePage {
     
     */
 
-    
-
     /*
 
-    this.valores[this.i] = Math.floor(this.getRandomArbitrary(60, 80));
+          this.valores[this.i] = Math.floor(this.getRandomArbitrary(70, 115));
 
       this.batimentoParcial = this.valores[this.i];
 
       this.batimentoFinal = this.batimentoParcial;
-    
-    
+
     */
 
     for (this.i = 0; this.i < 10; this.i++) {
@@ -109,10 +106,11 @@ export class HomePage {
           if (data != "") {
             this.batimentoParcial = data;
             this.batimentoFinal = parseInt(this.batimentoParcial);
-            //console.log("read" + data);
+            console.log("read: " + data);
           }
         }, (error) => console.log(error));
       }, (error) => console.log(error));
+      
 
       await this.delay(1300);
     }
